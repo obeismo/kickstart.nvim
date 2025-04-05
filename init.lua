@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -127,6 +127,7 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.smartindent = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -187,7 +188,13 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
+vim.keymap.set('n', 'H', '^', { noremap = true })
+vim.keymap.set('n', 'L', '$', { noremap = true })
+vim.keymap.set('v', 'H', '^', { noremap = true })
+vim.keymap.set('v', 'L', '$', { noremap = true })
+
+vim.keymap.set('n', '<leader>R', '<cmd>!go run .<CR>')
+
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
