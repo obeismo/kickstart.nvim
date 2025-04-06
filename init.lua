@@ -312,6 +312,16 @@ require('lazy').setup({
           footer = { '' },
         },
       }
+      for _, group in ipairs {
+        'Normal',
+        'NormalNC',
+        'NormalFloat',
+        'FloatBorder',
+        'SignColumn',
+        'VertSplit',
+      } do
+        vim.api.nvim_set_hl(0, group, { bg = 'none' })
+      end
     end,
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
