@@ -263,6 +263,18 @@ require('lazy').setup({
       -- fill any relevant options here
     },
   },
+  {
+    'aktersnurra/no-clown-fiesta.nvim',
+    name = 'no-clown-fiesta',
+    priority = 1000, -- загружается до всего остального
+    config = function()
+      vim.cmd.colorscheme 'no-clown-fiesta'
+      -- если хочешь прозрачный фон:
+      for _, group in ipairs { 'Normal', 'NormalNC', 'NormalFloat', 'FloatBorder', 'SignColumn', 'VertSplit' } do
+        vim.api.nvim_set_hl(0, group, { bg = 'none' })
+      end
+    end,
+  },
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -934,7 +946,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'no-clown-fiesta'
     end,
   },
 
