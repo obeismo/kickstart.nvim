@@ -192,6 +192,7 @@ vim.keymap.set('n', 'H', '^', { noremap = true })
 vim.keymap.set('n', 'L', '$', { noremap = true })
 vim.keymap.set('v', 'H', '^', { noremap = true })
 vim.keymap.set('v', 'L', '$', { noremap = true })
+vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>R', '<cmd>!go run .<CR>')
 
@@ -247,6 +248,15 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function()
+      require('nvim-autopairs').setup {
+        -- check_ts = true, -- Использовать treesitter для контекста (например, чтобы не добавлялись скобки в строках комментов)
+      }
+    end,
+  },
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -997,6 +1007,7 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'no-clown-fiesta'
+      vim.cmd [[highlight MatchParen guibg=#94aba3 guifg=#1e1e2e gui=bold]]
     end,
   },
 
